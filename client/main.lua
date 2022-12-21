@@ -263,10 +263,18 @@ function ActionCleanup()
         end
     end
 
-    DetachEntity(NetToObj(prop_net), 1, 1)
-    DeleteEntity(NetToObj(prop_net))
-    DetachEntity(NetToObj(propTwo_net), 1, 1)
-    DeleteEntity(NetToObj(propTwo_net))
+    -- DetachEntity(NetToObj(prop_net), 1, 1) -- Commented out next 4 lines for constant error messages in F8
+    -- DeleteEntity(NetToObj(prop_net))
+    -- DetachEntity(NetToObj(propTwo_net), 1, 1)
+    -- DeleteEntity(NetToObj(propTwo_net))
+    if prop_net then -- Added next 8 lines to stop the error above
+        DetachEntity(NetToObj(prop_net), 1, 1)
+        DeleteEntity(NetToObj(prop_net))
+    end
+    if propTwo_net then
+        DetachEntity(NetToObj(propTwo_net), 1, 1)
+        DeleteEntity(NetToObj(propTwo_net))
+    end
     prop_net = nil
     propTwo_net = nil
     runProgThread = false
